@@ -5,17 +5,20 @@
         <v-card dark app class="dorderRow">
           <v-row class="infoday d-flex justify-center">
             <v-col class="mt-xs-4 mt-0 pr-xs-0 mb-0 pb-0 pt-1 pt-sm-10" sm="4" cols="12">
-              <h4 class="d-flex d-sm-none d-flex justify-center">
+              <div class="d-flex justify-center pl-10 ">
+              <h5 class="d-flex d-sm-none d-flex justify-center">
                 {{resultWeather.dayClim[0]}}
                 {{moment().format('DD-MM-YYYY')}}
-                {{resultWeather.timezone.split("/")[2]}}
-              </h4>
+                {{resultWeather.timezone}}
+              </h5>
+              </div>
+
               <v-simple-table class="transparent" dense>
                 <template>
                   <tbody>
                     <tr>
                       <td>
-                        <h2>Indice UV actual</h2>
+                        <h2>Indice UV </h2>
                       </td>
                       <td>
                         <h2>{{ resultWeather.current.uvi}}</h2>
@@ -23,7 +26,7 @@
                     </tr>
                     <tr>
                       <td>
-                        <h2>Visibilidad actual</h2>
+                        <h2>Visibilidad </h2>
                       </td>
                       <td>
                         <h2>{{ resultWeather.current.visibility / 1000}} km</h2>
@@ -31,7 +34,7 @@
                     </tr>
                     <tr>
                       <td>
-                        <h2>Viento actual</h2>
+                        <h2>Viento </h2>
                       </td>
                       <td>
                         <h2
@@ -61,7 +64,7 @@
                   <tbody>
                     <tr>
                       <td>
-                        <h2>Maxima actual</h2>
+                        <h2>Maxima </h2>
                       </td>
                       <td>
                         <h2>{{Math.round(resultWeather.daily[0].temp.max)}}&deg;C</h2>
@@ -69,7 +72,7 @@
                     </tr>
                     <tr>
                       <td>
-                        <h2>Minima actual</h2>
+                        <h2>Minima </h2>
                       </td>
                       <td>
                         <h2>{{Math.round(resultWeather.daily[0].temp.min)}}&deg;C</h2>
@@ -77,7 +80,7 @@
                     </tr>
                     <tr>
                       <td>
-                        <h2>Humedad actual</h2>
+                        <h2>Humedad </h2>
                       </td>
                       <td>
                         <h2 class="transparent">{{resultWeather.current.humidity}}%</h2>
@@ -111,14 +114,12 @@
           :key="i.tem"
         >
           <template>
-            <!--    
-            v-slot:default="{ hover }" en el template
-            -->
+
             <v-card elevation="24" width="500" height="auto" class="rounded-xl cardW"  dense>
               <v-list-item class="py-0 my-0">
                 <v-list-item-content class="py-0">
                   <v-list-item-subtitle class="my-0 d-flex justify-center">
-                    <h3>{{resultWeather.dayClim[index]}}</h3>
+                    <h3>{{index === 0 ?  `Hoy ${resultWeather.dayClim[index]}` : resultWeather.dayClim[index]}}</h3>
                   </v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>

@@ -15,7 +15,7 @@
             <v-toolbar-title>{{now}}</v-toolbar-title>
           </v-col>
           <v-col sm="3" cols="6" class=" d-none d-sm-flex justify-center justify-sm-end ">
-            <v-toolbar-title >{{resultWeather.timezone.split("/")[2]}}</v-toolbar-title>
+            <v-toolbar-title >{{resultWeather.timezone}}</v-toolbar-title>
           </v-col>
         </v-row>
       </v-container>

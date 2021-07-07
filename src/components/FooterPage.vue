@@ -49,12 +49,17 @@ export default {
       {
         title: "GitHub",
         icon: "mdi-github",
-        href: "https://github.com/marcoscuchian/weatherc"
+        href: "https://github.com/marcoscuchian/weathercuch"
       },
       {
         title: "Instagram",
         icon: "mdi-instagram",
         href: "https://www.instagram.com/marcoscuchian/"
+      },
+      {
+        title: "Whatsapp",
+        icon: "mdi-whatsapp",
+        href: "https://wa.me/5493517437999"
       }
     ]
   })

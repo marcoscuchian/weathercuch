@@ -1,16 +1,16 @@
 <template>
-  <div app class="flex mb-15 pt-0" fluid >
+  <div app class="flex mb-15 pt-0" fluid>
     <v-row dark class="my-0 triangle teal">
       <v-col>
         <v-card dark app class="dorderRow">
           <v-row class="infoday d-flex justify-center">
             <v-col class="mt-xs-4 mt-0 pr-xs-0 mb-0 pb-0 pt-1 pt-sm-10" sm="4" cols="12">
-              <div class="d-flex justify-center pl-10 ">
-              <h5 class="d-flex d-sm-none d-flex justify-center">
-                {{resultWeather.dayClim[0]}}
-                {{moment().format('DD-MM-YYYY')}}
-                {{resultWeather.timezone}}
-              </h5>
+              <div class="d-flex justify-center pl-10">
+                <h5 class="d-flex d-sm-none d-flex justify-center">
+                  {{resultWeather.dayClim[0]}}
+                  {{moment().format('DD-MM-YYYY')}}
+                  {{resultWeather.timezone}}
+                </h5>
               </div>
 
               <v-simple-table class="transparent" dense>
@@ -18,7 +18,7 @@
                   <tbody>
                     <tr>
                       <td>
-                        <h2>Indice UV </h2>
+                        <h2>Indice UV</h2>
                       </td>
                       <td>
                         <h2>{{ resultWeather.current.uvi}}</h2>
@@ -26,7 +26,7 @@
                     </tr>
                     <tr>
                       <td>
-                        <h2>Visibilidad </h2>
+                        <h2>Visibilidad</h2>
                       </td>
                       <td>
                         <h2>{{ resultWeather.current.visibility / 1000}} km</h2>
@@ -34,7 +34,7 @@
                     </tr>
                     <tr>
                       <td>
-                        <h2>Viento </h2>
+                        <h2>Viento</h2>
                       </td>
                       <td>
                         <h2
@@ -46,7 +46,7 @@
                 </template>
               </v-simple-table>
             </v-col>
-            <v-col sm="2" cols="12" class="pb-0 ma-0 pt-1 pr-0 pr-sm-0 d-flex justify-center ">
+            <v-col sm="2" cols="12" class="pb-0 ma-0 pt-1 pr-0 pr-sm-0 d-flex justify-center">
               <v-img
                 contain
                 class="IconPrin"
@@ -54,17 +54,19 @@
                 :src="`http://openweathermap.org/img/wn/${resultWeather.daily[0].weather[0].icon}@2x.png`"
               ></v-img>
             </v-col>
-            <v-col cols="12" sm="2" class=" pt-0 pt-sm-15" v-if="resultWeather">
+            <v-col cols="12" sm="2" class="pt-0 pt-sm-15" v-if="resultWeather">
               <h2 class="d-flex justify-center">{{ Math.round(resultWeather.current.temp)}}&deg;C</h2>
-              <h2 class="d-flex justify-center">{{resultWeather.current.weather[0].description.charAt(0).toUpperCase()  }}{{resultWeather.current.weather[0].description.slice(1)  }}</h2>
+              <h2
+                class="d-flex justify-center"
+              >{{resultWeather.current.weather[0].description.charAt(0).toUpperCase() }}{{resultWeather.current.weather[0].description.slice(1) }}</h2>
             </v-col>
-            <v-col class="mt-xs-4 mt-0 pr-xs-0 pr-0 pl-0  mb-0 pb-0 pt-1 pt-sm-10" sm="4" cols="11">
+            <v-col class="mt-xs-4 mt-0 pr-xs-0 pr-0 pl-0 mb-0 pb-0 pt-1 pt-sm-10" sm="4" cols="11">
               <v-simple-table class="transparent" dense>
                 <template v-slot:default>
                   <tbody>
                     <tr>
                       <td>
-                        <h2>Maxima </h2>
+                        <h2>Maxima</h2>
                       </td>
                       <td>
                         <h2>{{Math.round(resultWeather.daily[0].temp.max)}}&deg;C</h2>
@@ -72,7 +74,7 @@
                     </tr>
                     <tr>
                       <td>
-                        <h2>Minima </h2>
+                        <h2>Minima</h2>
                       </td>
                       <td>
                         <h2>{{Math.round(resultWeather.daily[0].temp.min)}}&deg;C</h2>
@@ -80,7 +82,7 @@
                     </tr>
                     <tr>
                       <td>
-                        <h2>Humedad </h2>
+                        <h2>Humedad</h2>
                       </td>
                       <td>
                         <h2 class="transparent">{{resultWeather.current.humidity}}%</h2>
@@ -114,12 +116,11 @@
           :key="i.tem"
         >
           <template>
-
-            <v-card elevation="24" width="500" height="auto" class="rounded-xl cardW"  dense>
+            <v-card elevation="24" width="500" height="auto" class="rounded-xl cardW" dense>
               <v-list-item class="py-0 my-0">
                 <v-list-item-content class="py-0">
                   <v-list-item-subtitle class="my-0 d-flex justify-center">
-                    <h3>{{index === 0 ?  `Hoy ${resultWeather.dayClim[index]}` : resultWeather.dayClim[index]}}</h3>
+                    <h3>{{index === 0 ? `Hoy ${resultWeather.dayClim[index]}` : resultWeather.dayClim[index]}}</h3>
                   </v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
@@ -144,7 +145,9 @@
                 <template v-slot:default class="cardW">
                   <tbody>
                     <tr class="py-0 my-0">
-                      <td class="d-flex justify-center">{{i.weather[0].description.charAt(0).toUpperCase()}}{{i.weather[0].description.slice(1)  }}</td>
+                      <td
+                        class="d-flex justify-center"
+                      >{{i.weather[0].description.charAt(0).toUpperCase()}}{{i.weather[0].description.slice(1) }}</td>
                       <td></td>
                     </tr>
                     <tr>
@@ -167,7 +170,7 @@
                       <td>Indice UV</td>
                       <td>{{ i.uvi}}</td>
                     </tr>
-   
+
                     <tr>
                       <td>Viento:</td>
                       <td>{{ Math.round(i.wind_speed *3.60)}} k/h</td>
@@ -201,8 +204,7 @@ export default {
     this.getWeather();
   },
 
-  updated() {
-  },
+  updated() {},
 
   methods: {
     ...mapActions(["getWeather"])

@@ -7,25 +7,13 @@ export default new Vuex.Store({
     resultWeather: {},
   },
   mutations: {
-
     infoWeather(state, result) {
       state.resultWeather = result;
     },
-
-
-
   },
   actions: {
-
-
-
     getWeather: async function (context) {
-
-
-
       const apiKey = process.env.VUE_APP_API_KEY;
-
-      
       const getWeather = async () => {
         let coords;
         try {
@@ -35,18 +23,14 @@ export default new Vuex.Store({
               (err) => reject('No se permitió el acceso a la localización. Se usará por defecto Córdoba, Argentina.'),
             );
           })
-        } catch(e) {
-  
+        } catch (e) {
+
           coords = {
             latitude: -31.4261,
             longitude: -64.1916,
           };
           console.warn(e)
         }
-
-
-
-
         const queryParams = {
           lat: coords.latitude,
           lon: coords.longitude,
@@ -55,7 +39,6 @@ export default new Vuex.Store({
           lang: 'es',
           appid: apiKey,
         }
-
         let url = 'https://api.openweathermap.org/data/2.5/onecall?';
         const paramsArray = Object.keys(queryParams);
         paramsArray.forEach((item, index) => {
@@ -65,8 +48,6 @@ export default new Vuex.Store({
         const response = await fetch(url);
         return response.json();
       }
-
-
       const dateN = new Date()
       let dia = dateN.getDay()
       const dias = [
@@ -79,11 +60,9 @@ export default new Vuex.Store({
         'Sábado',
       ];
       const diasArr = []
-
       for (let index = 0; index < 9; index++) {
         const diasMostrar = dias[dia++ % 7]
         diasArr.push(diasMostrar)
-
       }
       getWeather().then((result) => {
         const resultModif = {
@@ -91,13 +70,8 @@ export default new Vuex.Store({
           dayClim: diasArr,
         };
         context.commit('infoWeather', resultModif);
-
       })
-
-
     },
-
   },
-  modules: {
-  }
+
 })

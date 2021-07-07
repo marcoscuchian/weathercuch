@@ -3,19 +3,17 @@
     <v-app-bar dark app class="teal pb-0">
       <v-container fluid>
         <v-row>
-          <v-col class=" d-none d-sm-flex" sm="3" >
+          <v-col class="d-none d-sm-flex" sm="3">
             <v-toolbar-title v-if="resultWeather">
-            
-              {{resultWeather.dayClim[0] ?   resultWeather.dayClim[0] : ""}}
+              {{resultWeather.dayClim[0] ? resultWeather.dayClim[0] : ""}}
               {{moment().format('DD-MM-YYYY')}}
-            
             </v-toolbar-title>
           </v-col>
-          <v-col sm="6" cols="12" class=" d-flex justify-center justify-sm-center ">
+          <v-col sm="6" cols="12" class="d-flex justify-center justify-sm-center">
             <v-toolbar-title>{{now}}</v-toolbar-title>
           </v-col>
-          <v-col sm="3" cols="6" class=" d-none d-sm-flex justify-center justify-sm-end ">
-            <v-toolbar-title >{{resultWeather.timezone}}</v-toolbar-title>
+          <v-col sm="3" cols="6" class="d-none d-sm-flex justify-center justify-sm-end">
+            <v-toolbar-title>{{resultWeather.timezone}}</v-toolbar-title>
           </v-col>
         </v-row>
       </v-container>
@@ -34,18 +32,16 @@ export default {
   name: "NavBar",
 
   data: () => ({
-    now:0,
+    now: 0
   }),
 
   mounted() {
     this.getWeather();
   },
-  updated(){
+  updated() {
     this.updateNow();
     setInterval(this.updateNow.bind(this), 1000);
-
   },
-
 
   methods: {
     ...mapActions(["getWeather"]),

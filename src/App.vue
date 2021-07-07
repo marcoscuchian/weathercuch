@@ -1,6 +1,6 @@
 <template>
-  <v-app >
-    <v-main fluid >
+  <v-app>
+    <v-main fluid>
       <div class="pt-0" fluid>
         <router-view />
       </div>
@@ -12,13 +12,10 @@
 export default {
   name: "App",
 
-
   data: () => ({
     //
   })
 };
 </script>
 <style scoped>
-
-
 </style>
